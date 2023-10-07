@@ -1,0 +1,3 @@
+[submodule "nest-teslo"]
+	path = nest-teslo
+	url = https://github.com/Neno2113/nest-teslo.git
