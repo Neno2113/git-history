@@ -1,2 +1,2 @@
-export { ProjectIndicator } from './ProjectIndicator';
-export { ProjectCard } from "./ProjectCard";
+export { BranchIndicator  } from './BranchIndicator';
+export { CommitCard } from "./CommitCard";

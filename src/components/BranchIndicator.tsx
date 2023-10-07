@@ -4,14 +4,12 @@ import { IconType } from 'react-icons/lib';
 
 
 interface Props {
-    number: string | number;
     indicatorText: string;
-    color: "twitter" | "cyan" | "facebook" | "teal" | "whatsapp";
     icon: IconType;
 }
 
 
-export const ProjectIndicator: FC<Props> = ({ number, indicatorText, color, icon }) => {
+export const BranchIndicator: FC<Props> = ({ indicatorText, icon }) => {
 
     const [toggleTag, setToggleTag] = useState<boolean>(false);
 
@@ -24,16 +22,15 @@ export const ProjectIndicator: FC<Props> = ({ number, indicatorText, color, icon
             <Tag 
                 size='md' 
                 variant={ toggleTag ? "solid" : "outline"} 
-                colorScheme={ toggleTag ? color : "gray"} 
+                colorScheme={ toggleTag ? "telegram" : "gray"} 
                 shadow="sm"
                 _hover={{ cursor: 'pointer' }} 
                 py={2} 
                 px={3} 
                 border='1px'
-                borderRadius={15}
+                borderRadius={14}
                 onClick={ onToggleTag }
             >
-                <Text as='b' fontSize='lg' mr={1}>{ number }</Text>
                 <Text fontSize='sm' >{ indicatorText }</Text>
                 <TagRightIcon as={ icon } fontSize={20}/>
             </Tag>
