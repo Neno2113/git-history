@@ -10,8 +10,8 @@ export const HomeView = () => {
     return (
         <SimpleGrid columns={{ sm: 1, md: 2, lg:3, xl:4, '2xl':5  }} spacing={2} w={'full'} mt={10} alignItems='center' >
             {
-                commits.map( commit => (
-                    <GridItem  key={ commit.node_id }  >
+                commits.map( (commit, index) => (
+                    <GridItem  key={ index }  >
                         <CommitCard 
                             commitDescription={ commit.commit.message} 
                             commitDate={ commit.commit.committer.date }

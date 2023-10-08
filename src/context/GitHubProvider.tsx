@@ -23,7 +23,8 @@ export const GitHubProvider: FC<Props> = ({ children }) => {
     const setCommits = (commits: CommitsResponse[]) => {
         if( commits === undefined ) return;
 
-        if( commits.every(commit => githubState.commits.includes(commit))) return;
+        // if( commits.every(commit => githubState.commits.includes(commit))) return;
+        removeCommits(commits);
 
         setGithubState({
             commits: [ ...commits, ...githubState.commits]

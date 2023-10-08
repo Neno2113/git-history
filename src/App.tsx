@@ -20,7 +20,7 @@ const App = () => {
     in={true}
     delay={0.3}
   > 
-    <Container  w='96vw' maxW='99vw' height='95vh' maxH='95vh' my={5} >
+    <Container  w='96vw' maxW='vw96' height='95vh' maxH='95vh' my={5} >
       <Grid
         h='full'
         templateRows='repeat(11, 1fr)'
@@ -38,11 +38,14 @@ const App = () => {
 
         >
           <Box 
-            w={{ sm: '97%', lg: '100%'}}
-            h={{ sm: 'none', md: '100%'}}
+            w={{ sm: '95%', lg: '100%'}}
+            h={{ sm: 'none', md: 'fit-context', lg: '100%', xl: 'scroll'}}
             bgColor='white' 
             borderRadius='50' 
             p={7} 
+            overflowY='auto'
+            overflowX='hidden'
+            
           >
             <HStack justifyContent='center' >
                 <Text as='b' fontSize='3xl' >Github History</Text>
