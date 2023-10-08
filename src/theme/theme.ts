@@ -21,35 +21,21 @@ const theme = extendTheme({
         }
        
     },
-    components: {
-        IconButton: {
-            isActive: {
-                backgroundColor: 'red',
-            }
+    colors: {
+        gitHubColor: {
+          50: '#333',
+          100: '#333',
+          200: '#333',
+          300: '#333',
+          400: '#333',
+          500: '#333',
+          600: '#333',
+          700: '#333',
+          800: '#333',
+          900: '#333',
         },
-        Input: {
-            // variants: {
-            //     outline: {
-            //         backgroundColor: 'red',
-            //         borderWidth:'1px',  
-            //         borderColor: 'gray.500'
-            //     }
-            // }
+      },
 
-            defaultProps: {
-                border: '1px solid red'
-            }
-        }
-
-        // Button: {
-        //     variant: {
-        //         'futuro': {
-        //             backgroundColor: '#474343'
-                
-        //         }
-        //     }
-        // }
-    }
 });
 
 

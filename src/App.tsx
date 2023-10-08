@@ -3,9 +3,16 @@ import { FaCodeBranch } from 'react-icons/fa';
 
 import { BranchIndicator } from "./components"
 import { Outlet } from "react-router-dom";
+import { useBranches } from "./hooks";
 
 
 const App = () => {
+
+  const { data, isSuccess } = useBranches();
+
+  // console.log(branchesQuery);
+  
+
   return (
     <ScaleFade
     // key={location.key}
@@ -32,7 +39,7 @@ const App = () => {
         >
           <Box 
             w={{ sm: '97%', lg: '100%'}}
-            h="100%"
+            // h="100%"
             bgColor='white' 
             borderRadius='50' 
             p={7} 
@@ -42,26 +49,15 @@ const App = () => {
             </HStack>
 
             <Divider border='1px' borderColor='black' />
-            {/* <HStack w='full'> */}
                 <Wrap mt={5}  spacing='10px' align='center' justify='center'>
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
-                    <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
+                  {
+                    (isSuccess ) &&
+                      data?.map( branch => (
+                        <>
+                          <BranchIndicator icon={FaCodeBranch}  indicatorText={branch.name}  />
+                        </>
+                      ))
+                  }
                 </Wrap>
             <Outlet />
           </Box>

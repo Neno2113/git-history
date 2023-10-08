@@ -22,7 +22,7 @@ export const BranchIndicator: FC<Props> = ({ indicatorText, icon }) => {
             <Tag 
                 size='md' 
                 variant={ toggleTag ? "solid" : "outline"} 
-                colorScheme={ toggleTag ? "telegram" : "gray"} 
+                colorScheme={ toggleTag ? "gitHubColor" : "gray"} 
                 shadow="sm"
                 _hover={{ cursor: 'pointer' }} 
                 py={2} 
