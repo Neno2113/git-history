@@ -22,7 +22,7 @@ export const FloatingButton:FC<Props> = () => {
     return (
         <Box
             position='fixed'
-            left={150}
+            left={{ sm: 0, md: 150}}
             top={10}
         >
             <Button 
