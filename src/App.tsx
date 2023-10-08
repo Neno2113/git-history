@@ -39,7 +39,7 @@ const App = () => {
         >
           <Box 
             w={{ sm: '97%', lg: '100%'}}
-            // h="100%"
+            h={{ sm: 'none', md: '100%'}}
             bgColor='white' 
             borderRadius='50' 
             p={7} 
@@ -53,9 +53,14 @@ const App = () => {
                   {
                     (isSuccess ) &&
                       data?.map( branch => (
-                        <>
-                          <BranchIndicator icon={FaCodeBranch}  indicatorText={branch.name}  />
-                        </>
+                        <div  key={branch.name}  >
+                          <BranchIndicator 
+                            icon={FaCodeBranch}  
+                            indicatorText={branch.name} 
+                           
+                            commit={ branch.commit.sha }
+                          />
+                        </div>
                       ))
                   }
                 </Wrap>

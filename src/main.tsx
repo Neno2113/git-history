@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import { RouterProvider } from 'react-router-dom';
 import theme from './theme/theme.ts';
 import { router } from './router/AppRouter.tsx';
+import { GitHubProvider } from './context/GitHubProvider.tsx';
 
 
 
@@ -15,8 +16,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ChakraProvider theme={ theme }>
       <QueryClientProvider client={ queryClient }>
-        <ReactQueryDevtools />
-        <RouterProvider router={ router } />      
+        <GitHubProvider>
+          <ReactQueryDevtools />
+          <RouterProvider router={ router } />      
+        </GitHubProvider>
       </QueryClientProvider>
     </ChakraProvider>
   </React.StrictMode>,

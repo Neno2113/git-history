@@ -1,20 +1,51 @@
-import { FC, useState } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 import { VStack, Text, Tag, TagRightIcon } from "@chakra-ui/react"
 import { IconType } from 'react-icons/lib';
+import { useCommits } from '../hooks/useCommits';
+import { useQueryClient } from 'react-query';
+import { GitHubContext } from '../context/githubContext';
 
 
 interface Props {
     indicatorText: string;
     icon: IconType;
+    commit: string;
+    name?: string
 }
 
 
-export const BranchIndicator: FC<Props> = ({ indicatorText, icon }) => {
+export const BranchIndicator: FC<Props> = ({ indicatorText, icon, commit }) => {
 
-    const [toggleTag, setToggleTag] = useState<boolean>(false);
+    const queryClient = useQueryClient();
+    const { setCommits, removeCommits } = useContext( GitHubContext );
+    const [ selectedBranch, setSelectedBranch ] = useState("")
+    const [ toggleTag, setToggleTag ] = useState<boolean>(false);
+    const { data, isSuccess } = useCommits('git-history',  selectedBranch);
 
-    const onToggleTag = () => {
-        setToggleTag(!toggleTag);
+    useEffect(() => {
+        setCommits( data! );
+    }, [isSuccess ])
+    
+
+
+    const onToggleTag = async() => {
+        
+        if( toggleTag ) {
+            setSelectedBranch("")  
+            onRemoveCacheData()      
+            removeCommits(data!);
+            setToggleTag(false);
+            return
+        }
+        setSelectedBranch(commit);
+        
+        setToggleTag(true);
+
+        
+    }
+
+    const onRemoveCacheData = () => {
+        queryClient.invalidateQueries( commit )
     }
 
     return (

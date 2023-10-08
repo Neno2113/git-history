@@ -1,22 +1,25 @@
 import { FC} from "react"
+import { dateConvertion, timeSince } from '../helpers';
 import { Card, CardHeader, HStack, Text, 
-    CardBody, Flex, CardFooter, AvatarGroup, Avatar, Center, Tag, TagLabel, Divider } from "@chakra-ui/react"
-
+    CardBody, Flex, CardFooter, Avatar, Center, Tag, TagLabel, Divider, Box } from "@chakra-ui/react"
 
 
 interface Props {
-    projectDate?:  string;
-    projectName:   string;
-    projectStatus: string; 
-    projectProgressNumber: number;
-    projectTimeLeft?: string;
+    commitDate?:  string;
+    commitDescription: string;
+    authorAvatar?: string;
+    authorEmail?: string;
+    authorName?: string;
+    commitTimeSince?: string;
 }
 
 export const CommitCard:FC<Props> = ({ 
-    projectDate = 'april 4, 2023', 
-    // projectName, 
-    projectStatus,  
-    projectTimeLeft,
+    commitDate = 'april 4, 2023', 
+    authorAvatar,
+    commitDescription,
+    authorEmail,
+    authorName,
+    commitTimeSince = '4 days',
     }) => {
 
       return (
@@ -27,24 +30,25 @@ export const CommitCard:FC<Props> = ({
           variant="outline"
           bgColor="#BCC1D8"
         >
-          <CardHeader >
-            <HStack justifyContent="space-between">
+          <CardHeader pb={0} >
+            <HStack>
               <Text as="b" color="gray.700" fontSize="md" fontWeight="medium">
-                {projectDate}
+                Commit on 
               </Text>
+              <Text as='b'>
+                  { dateConvertion(commitDate)}
+                </Text>
             </HStack>
           </CardHeader>
-          <Divider />
           <CardBody>
             <Flex flexDirection="column" alignItems="center" w="full">
               <Text as="b">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui
-                numquam minima voluptatibus nisi, repudiandae quis recusandae
+                { commitDescription }
               </Text>
-              <Text>{projectStatus}</Text>
+              <Text>{authorEmail}</Text>
             </Flex>
           </CardBody>
-          {/* <Divider /> */}
+          <Divider />
           <CardFooter
             p={5}
             display="flex"
@@ -53,28 +57,20 @@ export const CommitCard:FC<Props> = ({
             w="full"
             py={2}
           >
-            <AvatarGroup size="sm" max={2} mt={0} pt={0}>
+            <HStack >
               <Avatar
-                name="Ryan Florence"
-                src="https://bit.ly/ryan-florence"
+                size='sm'
+                name={ authorName }
+                src={ authorAvatar }
               />
-              <Avatar
-                name="Segun Adebayo"
-                src="https://bit.ly/sage-adebayo"
-              />
-              <Avatar name="Kent Dodds" src="https://bit.ly/kent-c-dodds" />
-              <Avatar
-                name="Prosper Otemuyiwa"
-                src="https://bit.ly/prosper-baba"
-              />
-              <Avatar
-                name="Christian Nwamba"
-                src="https://bit.ly/code-beast"
-              />
-            </AvatarGroup>
+              <Box w='full'>
+                <Text color='#000' as='b'>{authorName}</Text>
+              </Box>
+            </HStack>
+          
             <Center>
-              <Tag colorScheme="teal" borderRadius="2xl" py={2} px={3}>
-                <TagLabel as="b">{projectTimeLeft}</TagLabel>
+              <Tag colorScheme="linkedin" borderRadius="2xl" py={2} px={3}>
+                <TagLabel as="b">{timeSince(commitTimeSince)}</TagLabel>
               </Tag>
             </Center>
           </CardFooter>
