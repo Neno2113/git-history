@@ -1,9 +1,10 @@
-import { SimpleGrid, GridItem, Divider, Wrap, Spinner } from "@chakra-ui/react"
+import { SimpleGrid, GridItem, Divider, Wrap } from "@chakra-ui/react"
 import { BranchIndicator, CommitCard } from "../components"
 import { useContext, useEffect } from 'react';
 import { GitHubContext } from "../context/githubContext";
 import { FaCodeBranch } from "react-icons/fa";
 import { useBranches } from "../hooks";
+import { LoadingView } from ".";
 
 export const HomeView = () => {
 
@@ -15,15 +16,7 @@ export const HomeView = () => {
     }, []);
     
     if( isLoading )
-        return (
-            <Spinner
-                thickness='4px'
-                speed='0.65s'
-                emptyColor='gray.200'
-                color='blue.500'
-                size='xl'
-            />
-        )
+        return <LoadingView />
 
 
     return (
@@ -44,7 +37,7 @@ export const HomeView = () => {
                     ))
                 }
                 </Wrap>
-            <SimpleGrid columns={{ sm: 1, md: 2, lg:3, xl:4, '2xl':5  }} spacing={2} w={'full'} mt={10} alignItems='center' >
+            <SimpleGrid columns={{ sm: 1, md: 2, lg:3, xl:4, '2xl':5  }} spacingY={4} w={'full'} mt={10} alignItems='center' >
                 {
                     commits.map( (commit, index) => (
                         <GridItem  key={ index }  >

@@ -28,7 +28,7 @@ export const CommitCard:FC<Props> = ({
           w={320}
           boxShadow="2xl"
           variant="outline"
-          bgColor="#BCC1D8"
+          bgColor="#d7d7d8"
         >
           <CardHeader pb={0} >
             <HStack>

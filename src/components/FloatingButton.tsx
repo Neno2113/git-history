@@ -22,8 +22,8 @@ export const FloatingButton:FC<Props> = () => {
     return (
         <Box
             position='fixed'
-            right={100}
-            top={120}
+            left={150}
+            top={10}
         >
             <Button 
                 leftIcon={ <FaCodeBranch /> }
