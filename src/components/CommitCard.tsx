@@ -41,7 +41,7 @@ export const CommitCard:FC<Props> = ({
             </HStack>
           </CardHeader>
           <CardBody>
-            <Flex flexDirection="column" alignItems="center" w="full">
+            <Flex flexDirection="column" alignItems="center" w="full" height='100px'>
               <Text as="b">
                 { commitDescription }
               </Text>
