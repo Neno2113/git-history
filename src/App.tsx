@@ -1,7 +1,8 @@
-import { ScaleFade, Container, Grid, Box,  GridItem, HStack, SimpleGrid, Text, Divider, Wrap } from "@chakra-ui/react"
+import { ScaleFade, Container, Grid, Box,  GridItem, HStack, Text, Divider, Wrap } from "@chakra-ui/react"
 import { FaCodeBranch } from 'react-icons/fa';
 
-import { CommitCard, BranchIndicator } from "./components"
+import { BranchIndicator } from "./components"
+import { Outlet } from "react-router-dom";
 
 
 const App = () => {
@@ -62,58 +63,7 @@ const App = () => {
                     <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
                     <BranchIndicator icon={FaCodeBranch}   indicatorText='Levantamiento'  />
                 </Wrap>
-            {/* </HStack> */}
-
-            <SimpleGrid columns={{ sm: 1, md: 2, lg:3, xl:4, '2xl':5  }} spacing={2} w={'full'} mt={10} alignItems='center' >
-                <GridItem   >
-                  <CommitCard 
-                      projectName={'Emergencia Web'} 
-                      projectStatus={'En Desarrollo'} 
-                      projectProgressNumber={10} 
-                      projectTimeLeft='4 Days left'             
-                  />
-                </GridItem>
-                <GridItem  >
-                  <CommitCard 
-                      projectName={'Emergencia Web'} 
-                      projectStatus={'En Desarrollo'} 
-                      projectProgressNumber={10} 
-                      projectTimeLeft='4 Days left'             
-                  />
-                </GridItem>
-                <GridItem  w='full' >
-                  <CommitCard 
-                      projectName={'Emergencia Web'} 
-                      projectStatus={'En Desarrollo'} 
-                      projectProgressNumber={10} 
-                      projectTimeLeft='4 Days left'             
-                  />
-                </GridItem>
-                <GridItem  w='full' >
-                  <CommitCard 
-                      projectName={'Emergencia Web'} 
-                      projectStatus={'En Desarrollo'} 
-                      projectProgressNumber={10} 
-                      projectTimeLeft='4 Days left'             
-                  />
-                </GridItem>
-                <GridItem  w='full' >
-                  <CommitCard 
-                      projectName={'Emergencia Web'} 
-                      projectStatus={'En Desarrollo'} 
-                      projectProgressNumber={10} 
-                      projectTimeLeft='4 Days left'             
-                  />
-                </GridItem>
-                <GridItem  w='full' >
-                  <CommitCard 
-                      projectName={'Emergencia Web'} 
-                      projectStatus={'En Desarrollo'} 
-                      projectProgressNumber={10} 
-                      projectTimeLeft='4 Days left'             
-                  />
-                </GridItem>
-            </SimpleGrid>
+            <Outlet />
           </Box>
         </GridItem>
         
