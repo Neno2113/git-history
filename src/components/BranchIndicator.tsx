@@ -11,16 +11,17 @@ interface Props {
     icon: IconType;
     commit: string;
     name?: string
+    repo_name?: string;
 }
 
 
-export const BranchIndicator: FC<Props> = ({ indicatorText, icon, commit }) => {
+export const BranchIndicator: FC<Props> = ({ indicatorText, icon, commit, repo_name }) => {
 
     const queryClient = useQueryClient();
     const { setCommits, removeCommits } = useContext( GitHubContext );
     const [ selectedBranch, setSelectedBranch ] = useState("")
     const [ toggleTag, setToggleTag ] = useState<boolean>(false);
-    const { data, isSuccess } = useCommits('git-history',  selectedBranch);
+    const { data, isSuccess } = useCommits(repo_name,  selectedBranch);
 
     useEffect(() => {
         setCommits( data! );
@@ -40,8 +41,6 @@ export const BranchIndicator: FC<Props> = ({ indicatorText, icon, commit }) => {
         setSelectedBranch(commit);
         
         setToggleTag(true);
-
-        
     }
 
     const onRemoveCacheData = () => {

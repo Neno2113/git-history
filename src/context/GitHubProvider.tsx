@@ -38,6 +38,10 @@ export const GitHubProvider: FC<Props> = ({ children }) => {
         })
     }
 
+    const clearCommits = () => {
+        setGithubState( GitCommitStateInitialState)
+    }
+
 
     return (
         <GitHubContext.Provider  value={{
@@ -45,7 +49,8 @@ export const GitHubProvider: FC<Props> = ({ children }) => {
 
 
             setCommits,
-            removeCommits
+            removeCommits,
+            clearCommits
         }}>
             { children }
         </GitHubContext.Provider>

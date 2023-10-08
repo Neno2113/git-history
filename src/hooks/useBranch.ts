@@ -4,21 +4,21 @@ import { BranchesResponse } from "../interfaces/branches"
 
 
 
-export const getBranches = async():Promise<BranchesResponse[]> => {
+export const getBranches = async( repo_name: string ):Promise<BranchesResponse[]> => {
 
-    const { data } = await githubHistoryApi.get<BranchesResponse[]>(`/git-history`);
+    const { data } = await githubHistoryApi.get<BranchesResponse[]>(`/${repo_name}`);
     
     return data;
 }
 
 
 
-export const useBranches = () => {
+export const useBranches = ( repo_name: string ) => {
 
 
     const { data, isLoading, isError, isSuccess } = useQuery(
         ['branches'],
-        getBranches
+        () => getBranches(repo_name)
     );
 
     return {

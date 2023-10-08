@@ -7,6 +7,7 @@ interface Props {
 
     setCommits: ( commits: CommitsResponse[]) => void
     removeCommits: ( commits: CommitsResponse[] ) => void
+    clearCommits: () => void
 }
 
 
